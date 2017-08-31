@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -29,7 +30,6 @@ void main() {
 					anagramA.erase(i, 1);
 					i--;
 				}
-
 			}
 			for (int i = 0; i < anagramB.size(); i++)
 			{
@@ -42,8 +42,13 @@ void main() {
 				}
 			}
 
-			if (anagramA.size() != anagramB.size())
-				fout << "NO";
+			sort(anagramA.begin(), anagramA.end());
+			sort(anagramB.begin(), anagramB.end());
+
+			if (anagramA == anagramB)
+				fout << "YES" << endl;
+			else
+				fout << "NO" << endl;
 
 			cout << anagramA << endl;
 			cout << anagramB << endl;
